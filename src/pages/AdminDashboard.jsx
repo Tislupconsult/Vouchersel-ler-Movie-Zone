@@ -1,75 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import API from "../../api/axios"; // Make sure this includes token in headers
-// import * as SC from "../../style";
-
-// export default function AdminDashboard() {
-//   const [users, setUsers] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   const fetchUsers = async () => {
-//     try {
-//       const token = localStorage.getItem("token");
-//       const res = await API.get("/users", {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       });
-//       setUsers(res.data);
-//       setLoading(false);
-//     } catch (err) {
-//       console.error("Error fetching users:", err);
-//       setLoading(false);
-//     }
-//   };
-
-//   const handleDelete = async (id) => {
-//     try {
-//       const token = localStorage.getItem("token");
-//       await API.delete(`/users/${id}`, {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       });
-//       setUsers(users.filter((user) => user._id !== id));
-//     } catch (err) {
-//       console.error("Error deleting user:", err);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchUsers();
-//   }, []);
-
-//   if (loading) return <p>Loading users...</p>;
-
-//   return (
-//     <SC.Main7>
-//     <div className="p-4 bg-container text-light-text min-h-screen max-w-xl mx-auto">
-//       <h1 className="text-xl font-bold mb-4">Admin Dashboard</h1>
-//       <ul className="space-y-3">
-//         {users.map((user) => (
-//           <li
-//             key={user._id}
-//             className="bg-background p-4 rounded shadow flex justify-between items-center"
-//           >
-//             <div>
-//               <p className="font-semibold">{user.username}</p>
-//               <p className="text-sm">{user.email}</p>
-//             </div>
-//             <button
-//               onClick={() => handleDelete(user._id)}
-//               className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-800"
-//             >
-//               Delete
-//             </button>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//     </SC.Main7>
-//   );
-// }
-
 import React, { useEffect, useState } from "react";
 import API from "../../api/axios";
 import * as SC from "../../style";
@@ -77,7 +5,6 @@ import * as SC from "../../style";
 export default function AdminDashboard() {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
-
   const [currentUserId, setCurrentUserId] = useState(null);
 
   useEffect(() => {
@@ -123,31 +50,31 @@ export default function AdminDashboard() {
   };
 
   return (
-    <SC.Main8>
-      <div className="text-white  min-h-screen p-6">
-        <h2 className="text-2xl font-bold mb-4">Admin Dashboard</h2>
+    <SC.Main8 className="bg-slate-900 min-h-screen text-white p-6">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl font-semibold mb-6 text-green-400">Admin Dashboard</h2>
 
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="text-red-400 mb-4">{error}</p>}
 
-        <ul className="space-y-4">
+        <ul className="grid md:grid-cols-2 gap-6">
           {users.map((user) => (
             <li
               key={user._id}
-              className="border-b pb-2 flex justify-between items-center"
+              className="bg-slate-800 rounded-xl shadow-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between"
             >
-              <span>
-                {user.username} - {user.email}
-              </span>
-              {user._id !== currentUserId && (
+              <div className="mb-2 sm:mb-0">
+                <p className="text-lg font-medium">{user.username}</p>
+                <p className="text-sm text-slate-400">{user.email}</p>
+              </div>
+              {user._id !== currentUserId ? (
                 <button
-                  className="bg-red-600 px-2 py-1 rounded"
+                  className="bg-red-500 hover:bg-red-600 transition-colors text-white px-4 py-1.5 rounded-md text-sm font-medium"
                   onClick={() => handleDelete(user._id)}
                 >
                   Delete
                 </button>
-              )}
-              {user._id === currentUserId && (
-                <span className="text-gray-400 italic text-sm">[You]</span>
+              ) : (
+                <span className="text-green-400 italic text-sm">[You]</span>
               )}
             </li>
           ))}

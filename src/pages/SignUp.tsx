@@ -1,106 +1,3 @@
-// import React from "react";
-// import { CustomInput } from "../components/input";
-// import { CustomButton } from "../components/button";
-// import { EyeOff, Eye, ArrowLeft } from "lucide-react";
-// import * as SC from "../../style";
-// import { Link } from "react-router-dom";
-
-// import API from "../../api/axios";
-
-// export default function SignUp() {
-//   const [Username, setUsername] = React.useState("");
-//   const [password, setPassword] = React.useState("");
-//   const [showPassword, setShowPassword] = React.useState(false);
-
-//   const handleRegister = async () => {
-//     try {
-//       const res = await API.post("/auth/register", {
-//         username: "johnDoe",
-//         email: "john@example.com",
-//         password: "secret123",
-//       });
-//       console.log(res.data); // Success message
-//     } catch (error) {
-//       console.error(error.response?.data || error.message);
-//     }
-
-//     const handleLogin = async () => {
-//       try {
-//         const res = await API.post("/auth/login", {
-//           email: "john@example.com",
-//           password: "secret123",
-//         });
-//         localStorage.setItem("token", res.data.token);
-//       } catch (error) {
-//         console.error(error.response?.data || error.message);
-//       }
-//     };
-//   };
-
-//   return (
-//     <SC.Main className="min-h-screen flex items-center justify-center bg-background">
-//       <div className="bg-container text-light-text py-8 px-3  lg:rounded-2xl shadow-md w-full max-w-md min-h-screen flex flex-col text-center align-top">
-//         <span className="flex gap-[31%]">
-//           <Link to="/log_In">
-//             <ArrowLeft size={20} />
-//           </Link>
-//           <h2 className="text-[16px] font-semibold mb-8">Vic Movies Zone</h2>
-//         </span>
-//         <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
-//         <form className="space-y-4">
-//           <CustomInput
-//             name={"name"}
-//             placeholder="Username / Email"
-//             value={Username}
-//             onChange={(e) => setUsername(e.target.value)}
-//             rightIcon={null}
-//           />
-
-//           <CustomInput
-//             name="password"
-//             placeholder="Create Password"
-//             type={showPassword ? "text" : "password"}
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//             rightIcon={
-//               <button
-//                 type="button"
-//                 onClick={() => setShowPassword((prev) => !prev)}
-//               >
-//                 {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-//               </button>
-//             }
-//           />
-
-//           <CustomInput
-//             name="password"
-//             placeholder="Confirm Password"
-//             type={showPassword ? "text" : "password"}
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//             rightIcon={
-//               <button
-//                 type="button"
-//                 onClick={() => setShowPassword((prev) => !prev)}
-//               >
-//                 {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-//               </button>
-//             }
-//           />
-
-//           <CustomButton
-//             type={"submit"}
-//             title={"Sign Up"}
-//             className="w-full p-3"
-//           />
-
-//           <span className="flex justify-between mt-2"></span>
-//         </form>
-//       </div>
-//     </SC.Main>
-//   );
-// }
-
 import React, { useState } from "react";
 import { CustomInput } from "../components/input";
 import { CustomButton } from "../components/button";
@@ -120,7 +17,6 @@ export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleRegister = async (e) => {
@@ -128,17 +24,17 @@ export default function SignUp() {
     setLoading(true);
 
     if (password !== confirmPassword) {
+      setLoading(false);
       return setErrorMsg("Passwords do not match.");
     }
 
     try {
-      const res = await API.post("/api/auth/register", {
+      await API.post("/api/auth/register", {
         username,
         email,
         password,
       });
 
-      // Automatically login user
       const loginRes = await API.post("/api/auth/login", {
         username,
         email,
@@ -150,23 +46,22 @@ export default function SignUp() {
       navigate("/home");
     } catch (error) {
       setErrorMsg(error.response?.data?.message || "Registration failed.");
-          setLoading(false);
-
+      setLoading(false);
     }
   };
 
   return (
     <SC.Main className="min-h-screen flex items-center justify-center bg-background">
-      <div className="bg-container text-light-text py-8 px-3 lg:rounded-2xl shadow-md w-full max-w-md min-h-screen flex flex-col text-center">
-        <span className=" flex justify-between items-center mb-5">
+      <div className="bg-container text-light-text py-8 px-4 lg:rounded-2xl shadow-md w-full max-w-md min-h-screen flex flex-col text-center">
+        
+        {/* Header */}
+        <span className="flex justify-between items-center mb-5">
           <Link to="/log_In">
             <ArrowLeft size={20} />
           </Link>
-          <h2 className="text-[16px] text-left font-semibold">
-            Vic Movies Zone
-          </h2>
+          <h2 className="text-[16px] font-semibold">Vouchersel$ler Movie Zone</h2>
           <Link to="/home">
-            <img src={logo} alt="" className="h-10" />
+            <img src={logo} alt="Trendz Logo" className="h-10" />
           </Link>
         </span>
 
@@ -183,7 +78,7 @@ export default function SignUp() {
 
           <CustomInput
             name="email"
-            placeholder="Email (N/B: case sensitive)"
+            placeholder="Email (case sensitive)"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             rightIcon={null}
@@ -221,7 +116,9 @@ export default function SignUp() {
             }
           />
 
-          {errorMsg && <p className="text-red-500 text-sm">{errorMsg}</p>}
+          {errorMsg && (
+            <p className="text-red-500 text-sm text-left">{errorMsg}</p>
+          )}
 
           <CustomButton
             type="submit"
@@ -229,7 +126,6 @@ export default function SignUp() {
             disabled={loading}
             className="w-full p-3 disabled:opacity-50"
           />
-
         </form>
       </div>
     </SC.Main>

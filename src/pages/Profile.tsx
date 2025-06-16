@@ -16,7 +16,6 @@ export default function Profile() {
   const [logoutLoading, setLogoutLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Fetch user info on mount
   useEffect(() => {
     async function fetchUser() {
       try {
@@ -106,35 +105,33 @@ export default function Profile() {
   };
 
   return (
-    <SC.Main6 className="min-h-screen flex items-center justify-center bg-background">
-      <div className="bg-container text-light-text py-8 px-4 lg:rounded-2xl shadow-md w-full max-w-md min-h-screen flex flex-col text-center">
-        <span className="flex justify-between items-center mb-5">
+    <SC.Main6 className="min-h-screen flex items-center justify-center bg-[#0f0c29] bg-gradient-to-br from-[#302b63] to-[#24243e]">
+      <div className="bg-[#1e1e2f] text-white py-8 px-5 rounded-2xl shadow-lg w-full max-w-md min-h-screen flex flex-col text-center">
+        <span className="flex justify-between items-center mb-6">
           <Link to="/home">
-            <ArrowLeft size={20} />
+            <ArrowLeft size={22} className="text-white" />
           </Link>
-          <h2 className="text-xl font-semibold">
-            {isFetching ? "Hello..." : `Hello ${username}`}
+          <h2 className="text-lg font-semibold">
+            {isFetching ? "Loading..." : `Welcome Back`}
           </h2>
-          <Link to="/home">
-            <img src={logo} alt="Logo" className="h-10" />
-          </Link>
+          <img src={logo} alt="Trendz Movies" className="h-10" />
         </span>
 
-        <p className="text-sm mb-2 text-gray-400 text-left">Update your details:</p>
-        <p className="text-lg font-medium mb-4">{username}</p>
+        <p className="text-sm text-gray-400 text-left mb-1">Manage your profile</p>
+        <p className="text-xl font-semibold text-left mb-4">{username}</p>
 
         <CustomInput
           name="username"
-          placeholder="New User-Name"
+          placeholder="New username"
           value={newUsername}
           onChange={(e) => setNewUsername(e.target.value)}
           rightIcon={null}
-          className="mb-5"
+          className="mb-4"
         />
 
         <button
           onClick={handleUpdate}
-          className="bg-blue-600 text-white py-2 rounded mb-4 cursor-pointer disabled:opacity-50"
+          className="bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded mb-4 disabled:opacity-50"
           disabled={updateLoading}
         >
           {updateLoading ? "Updating..." : "Update Username"}
@@ -142,7 +139,7 @@ export default function Profile() {
 
         <button
           onClick={handleDelete}
-          className="bg-red-600 text-white py-2 rounded mb-4 disabled:opacity-50"
+          className="bg-red-600 hover:bg-red-700 text-white py-2 rounded mb-4 disabled:opacity-50"
           disabled={deleteLoading}
         >
           {deleteLoading ? "Deleting..." : "Delete Account"}
@@ -150,7 +147,7 @@ export default function Profile() {
 
         <button
           onClick={handleLogout}
-          className="bg-gray-700 text-white py-2 rounded cursor-pointer disabled:opacity-50"
+          className="bg-gray-800 hover:bg-gray-700 text-white py-2 rounded disabled:opacity-50"
           disabled={logoutLoading}
         >
           {logoutLoading ? "Logging Out..." : "Log Out"}
