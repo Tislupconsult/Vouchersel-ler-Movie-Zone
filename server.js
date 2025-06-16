@@ -3,11 +3,6 @@ const app = require('./app');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-// import adminRoutes from "./routes/adminRoutes.js";
-
-// app.use("/api/admin", adminRoutes);
-
-
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
