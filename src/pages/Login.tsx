@@ -41,18 +41,18 @@ export default function LogIn() {
 
   return (
     <SC.Main className="min-h-screen flex items-center justify-center bg-background text-white">
-      <div className="bg-container w-full max-w-md min-h-screen py-8 px-4 lg:rounded-2xl shadow-lg flex flex-col justify-start">
+      <div className="w-full max-w-3xl mx-auto p-y flex flex-col gap-4 bg-[#FFFFFF66] rounded-2xl px-4 py-10">
         {/* Header */}
-        <div className="flex justify-between items-center mb-6 px-2">
-          <h2 className="text-lg font-semibold tracking-wide">Vouchersel$ler Movie Zone</h2>
+        <div className="flex justify-between items-center bg-slate-800 p-4 rounded-xl shadow-md text-white">
+          <h2 className="text-lg font-semibold tracking-wide text-green-400">Vouchersel$ler Movie Zone</h2>
           <Link to="/">
             <img src={logo} alt="Logo" className="h-10" />
           </Link>
         </div>
 
         {/* Title */}
-        <h2 className="text-3xl font-bold text-center mb-4">Welcome Back</h2>
-        <p className="text-center text-gray-400 text-sm mb-6">
+        <h2 className="text-3xl font-bold text-center mb-4 text-red-900">Welcome Back</h2>
+        <p className="text-center text-black text-sm mb-6">
           Log in to continue exploring amazing movies.
         </p>
 
@@ -98,7 +98,7 @@ export default function LogIn() {
               <CustomButton
                 type="button"
                 title="Sign Up"
-                className="w-full bg-slate-700 hover:bg-slate-600"
+                className="w-full bg-slate-700 hover:bg-slate-600 py-2"
                 disabled={loading}
               />
             </Link>

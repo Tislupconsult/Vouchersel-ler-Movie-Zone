@@ -52,20 +52,20 @@ export default function SignUp() {
 
   return (
     <SC.Main className="min-h-screen flex items-center justify-center bg-background">
-      <div className="bg-container text-light-text py-8 px-4 lg:rounded-2xl shadow-md w-full max-w-md min-h-screen flex flex-col text-center">
+      <div className="w-full max-w-3xl mx-auto p-y flex flex-col gap-4 bg-[#FFFFFF66] rounded-2xl px-4 py-10">
         
         {/* Header */}
-        <span className="flex justify-between items-center mb-5">
+        <span className="flex justify-between items-center bg-slate-800 p-4 rounded-xl shadow-md text-white">
           <Link to="/log_In">
             <ArrowLeft size={20} />
           </Link>
-          <h2 className="text-[16px] font-semibold">Vouchersel$ler Movie Zone</h2>
+          <h2 className="text-[16px] font-semibold text-green-400">Vouchersel$ler Movie Zone</h2>
           <Link to="/home">
             <img src={logo} alt="Trendz Logo" className="h-10" />
           </Link>
         </span>
 
-        <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
+        <h2 className="text-2xl font-bold mb-4 text-red-800">Sign Up</h2>
 
         <form onSubmit={handleRegister} className="space-y-4">
           <CustomInput
