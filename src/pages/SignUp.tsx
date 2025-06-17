@@ -29,13 +29,13 @@ export default function SignUp() {
     }
 
     try {
-      await API.post("/api/auth/register", {
+      await API.post("/auth/register", {
         username,
         email,
         password,
       });
 
-      const loginRes = await API.post("/api/auth/login", {
+      const loginRes = await API.post("/auth/login", {
         username,
         email,
         password,
