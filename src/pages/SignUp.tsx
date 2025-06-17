@@ -52,7 +52,7 @@ export default function SignUp() {
 
   return (
     <SC.Main className="min-h-screen flex items-center justify-center bg-background">
-      <div className="w-full max-w-3xl mx-auto p-y flex flex-col gap-4 bg-[#FFFFFF66] rounded-2xl px-4 py-10">
+      <div className="w-full max-w-3xl mx-auto p-y flex flex-col gap-4 bg-[#182d5cb1] rounded-2xl px-4 py-10">
         
         {/* Header */}
         <span className="flex justify-between items-center bg-slate-800 p-4 rounded-xl shadow-md text-white">
@@ -65,7 +65,7 @@ export default function SignUp() {
           </Link>
         </span>
 
-        <h2 className="text-2xl font-bold mb-4 text-red-800">Sign Up</h2>
+        <h2 className="text-2xl font-bold mb-4 text-red-600">Sign Up</h2>
 
         <form onSubmit={handleRegister} className="space-y-4">
           <CustomInput

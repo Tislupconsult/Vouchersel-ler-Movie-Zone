@@ -41,7 +41,7 @@ export default function LogIn() {
 
   return (
     <SC.Main className="min-h-screen flex items-center justify-center bg-background text-white">
-      <div className="w-full max-w-3xl mx-auto p-y flex flex-col gap-4 bg-[#FFFFFF66] rounded-2xl px-4 py-10">
+      <div className="w-full max-w-3xl mx-auto p-y flex flex-col gap-4 bg-[#182d5cb1] rounded-2xl px-4 py-10">
         {/* Header */}
         <div className="flex justify-between items-center bg-slate-800 p-4 rounded-xl shadow-md text-white">
           <h2 className="text-lg font-semibold tracking-wide text-green-400">Vouchersel$ler Movie Zone</h2>
@@ -51,8 +51,8 @@ export default function LogIn() {
         </div>
 
         {/* Title */}
-        <h2 className="text-3xl font-bold text-center mb-4 text-red-900">Welcome Back</h2>
-        <p className="text-center text-black text-sm mb-6">
+        <h2 className="text-3xl font-bold text-center mb-4 text-red-600">Welcome Back</h2>
+        <p className="text-center text-white text-sm mb-6">
           Log in to continue exploring amazing movies.
         </p>
 

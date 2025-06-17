@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Main = styled.main`
   background: linear-gradient(rgba(19, 4, 5, 0.4), rgba(1, 1, 10, 0.8)),
-    url('/background/background.png');
+    url('/background/background.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; 
@@ -10,7 +10,7 @@ export const Main = styled.main`
 
 export const Main2 = styled.main`
   background: linear-gradient(rgba(19, 4, 5, 0.4), rgba(1, 1, 10, 0.8)),
-    url('/background/background2.png');
+    url('/background/background2.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; 
@@ -34,7 +34,7 @@ export const Main4 = styled.main`
 
 export const Main5 = styled.main`
   background: linear-gradient(rgba(19, 4, 5, 0.4), rgba(1, 1, 10, 0.8)),
-    url('/background/background5.webp');
+    url('/background/background5.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; 
@@ -42,7 +42,7 @@ export const Main5 = styled.main`
 
 export const Main6 = styled.main`
   background: linear-gradient(rgba(19, 4, 5, 0.4), rgba(1, 1, 10, 0.8)),
-    url('/background/background6.webp');
+    url('/background/background6.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; 
